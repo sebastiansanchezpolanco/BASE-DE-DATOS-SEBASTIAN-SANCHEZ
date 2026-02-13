@@ -15,14 +15,14 @@ def getMascota2():
     return dato
 def getListaMascotas():
     listaMascotas=[]
-    dato=mascotas.Mascota()
-    dato.nombre="Nala"
-    dato.raza="Leon"
-    dato.edad=18
+    leona=mascotas.Mascota()
+    leona.nombre="Nala"
+    leona.raza="Leon"
+    leona.edad=18
     listaMascotas.append(leona)
-    dato=mascotas.Mascota()
-    dato.nombre="Simba"
-    dato.raza="Leon"
-    dato.edad=18
+    leon=mascotas.Mascota()
+    leon.nombre="Simba"
+    leon.raza="Leon"
+    leon.edad=18
     listaMascotas.append(leon)
-
+    return listaMascotas
