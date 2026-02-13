@@ -1,4 +1,5 @@
 import oracledb
+from models import departamento
 
 class ServiceDepartamentos:
     def __init__(self):
@@ -14,9 +15,36 @@ class ServiceDepartamentos:
         return registros
     def eliminarDepartamentos(self, id):
         cursor=self.connection.cursor()
-        sql="delete from DEPT where DEPT_NO:id"
+        sql="delete from DEPT where DEPT_NO=:id"
         cursor.execute(sql, (id, ))
         self.connection.commit()
         registros=cursor.rowcount
         cursor.close()
         return registros
+    def updateDepartamentos(self, numero, nombre, localidad):
+        cursor=self.connection.cursor()
+        sql="update DEPT set DNOMBRE=:nombre, LOC=:localidad where DEPT_NO=:numero"
+        cursor.execute(sql, (nombre, localidad, numero, ))
+        self.connection.commit()
+        registros=cursor.rowcount
+        cursor.close()
+        return registros
+    def recogerDatosDepartamentos(self):
+        cursor=self.connection.cursor()
+        sql="select * from DEPT"
+        cursor.execute(sql)
+        listadepartamento=[]
+        for row in cursor:
+            listadepartamento.append(row)
+        return listadepartamento
+    def getNombreDepartamento(self, iddepartamento):
+        cursor=self.connection.cursor()
+        sql="select + from DEPT where DEPT_NO=:iddepartamento"
+        cursor.execute(sql, (iddepartamento, ))
+        row=cursor.fetchone()
+        dept=departamento.Departamento()
+        dept.idDepartamento=row[0]
+        dept.nombre=row[1]
+        dept.localidad=row[2]
+        return row
+      
