@@ -33,18 +33,22 @@ class ServiceDepartamentos:
         cursor=self.connection.cursor()
         sql="select * from DEPT"
         cursor.execute(sql)
-        listadepartamento=[]
+        listaDepartamento=[]
         for row in cursor:
-            listadepartamento.append(row)
-        return listadepartamento
+            dept=departamento.Departamento()
+            dept.idDepartamento=row[0]
+            dept.nombre=row[1]
+            dept.localidad=row[2]
+            listaDepartamento.append(row)
+        return listaDepartamento
     def getNombreDepartamento(self, iddepartamento):
         cursor=self.connection.cursor()
-        sql="select + from DEPT where DEPT_NO=:iddepartamento"
+        sql="select  from DEPT where DEPT_NO=:iddepartamento"
         cursor.execute(sql, (iddepartamento, ))
         row=cursor.fetchone()
         dept=departamento.Departamento()
         dept.idDepartamento=row[0]
         dept.nombre=row[1]
         dept.localidad=row[2]
-        return row
+        return dept
       

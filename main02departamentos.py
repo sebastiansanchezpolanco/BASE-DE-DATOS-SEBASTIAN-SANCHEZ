@@ -5,7 +5,7 @@ print("1. Insertar")
 print("2. Eliminar")
 print("3. Modificar")
 print("4. Visualizar departamento")
-opcion=int(input("Selecciona una opcion"))
+opcion=int(input("Selecciona una opcion "))
 if(opcion==1):
     servicio=service02oracledepartamentos.ServiceDepartamentos()
     print("Insertar departamento")
@@ -28,11 +28,11 @@ elif(opcion==3):
 elif(opcion==4):
     servicio=service02oracledepartamentos.ServiceDepartamentos()
     departamento=int(input("Visualizar el departamento "))
-    registro=servicio.getNombreDepartamento(departamento)
-    print(f"nombre: {registro[0]}, localidad: {registro[1]}")
+    dept=servicio.getNombreDepartamento(departamento)
+    print(f"nombre: {dept.nombre}, localidad: {dept.localidad}")
 else:
     print("Opcion no valida")
 servicio=service02oracledepartamentos.ServiceDepartamentos()
-listadepartamentos=servicio.recogerDatosDepartamentos()
-for i in listadepartamentos:
+listaDepartamentos=servicio.recogerDatosDepartamentos()
+for i in listaDepartamentos:
     print(f"numero:{i[0]}, nombre: {i[1]}, localidad: {i[2]} ")
